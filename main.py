@@ -45,6 +45,11 @@ def cost_per_class(annual_cost, credits):
     return cost
 
 
+def cost_per_class_minute(annual_cost, credits):
+    """Give back what one minute of a CS 1430 class meeting costs."""
+    return cost_per_class(annual_cost, credits) / 50
+
+
 # ---- PROGRAM ----
 
 def main():
@@ -60,7 +65,7 @@ def main():
         print("3 Cost per class day")
         print("4 Cost per credit")
         print("5 Cost per CS 1430 class meeting")
-        print("6 Worth it?")
+        print("6 Cost per minute of a CS 1430 class")
         print("Q Quit")
 
         choice = input("Choose an option: ")
@@ -82,14 +87,10 @@ def main():
         elif choice == "Q":
             break
         elif choice == "6":
-            # Ask the user if they think college is worth it.
-            answer = input("Do you think college is worth it? (yes/no): ")
-            if answer.lower() == "yes":
-                print("Great! Keep up the good work!")
-            elif answer.lower() == "no":
-                print("That's okay. College isn't for everyone.")
-            else:
-                print("Invalid response. Please answer 'yes' or 'no'.")
+            print(
+                f"Cost per class minute: "
+                f"${cost_per_class_minute(cost_per_year, credits_per_year):.2f}"
+            )
 
 # ---- LAUNCH: do not change ----
 if __name__ == "__main__":
